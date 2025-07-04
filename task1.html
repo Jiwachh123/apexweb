@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interactive Welcome Page</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #fdfbfb, #ebedee);
+      color: #444;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #3366cc;
+      margin-bottom: 20px;
+      animation: slideDown 1s ease-out;
+    }
+
+    p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      text-align: center;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      max-height: 360px;
+      margin: 15px 0;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    img:hover {
+      transform: scale(1.05);
+    }
+
+    a {
+      margin-top: 10px;
+      display: inline-block;
+      font-size: 1rem;
+      color: #006699;
+      text-decoration: none;
+      border-bottom: 1px dashed #006699;
+    }
+
+    a:hover {
+      color: #004466;
+    }
+
+    button {
+      margin-top: 30px;
+      padding: 12px 24px;
+      font-size: 1.1rem;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #1f7a35;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>👋 Hello, Web Explorer!</h1>
+  <p>Welcome to a clean, modern webpage example styled with CSS and a hint of interactivity from JavaScript.</p>
+
+  <img src="https://images.unsplash.com/photo-1615525137689-198778541af6?q=80&w=470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="A sample visual" />
+
+  <p><strong>HTML</strong> stands for <em>HyperText Markup Language</em>. It forms the <strong>skeleton</strong> of any webpage by organizing and structuring its content.</p>
+
+  <p><strong>CSS</strong> (<em>Cascading Style Sheets</em>) is used to style and visually enhance HTML elements. It handles layout, colors, fonts, animations, and more.</p>
+
+  <img src="https://images.unsplash.com/photo-1537884944318-390069bb8665?q=80&w=470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Code on screen" />
+
+  <p><strong>JavaScript</strong> brings life to your website by allowing you to create <em>interactive</em> and dynamic features like buttons, forms, sliders, and much more.</p>
+
+  <img src="https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Teamwork and coding" />
+
+  <a href="https://www.example.com" target="_blank">Visit Example.com</a>
+
+  <button onclick="showMessage()">Click Me</button>
+
+  <script>
+    function showMessage() {
+      const greetings = [
+        "Hi there! 👋",
+        "Hope you're having an awesome day!",
+        "Thanks for clicking! 😄",
+        "Web magic activated ✨"
+      ];
+      const randomMessage = greetings[Math.floor(Math.random() * greetings.length)];
+      alert(randomMessage);
+    }
+  </script>
+
+</body>
+</html>
