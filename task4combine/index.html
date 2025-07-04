@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">MyPortfolio</div>
+            <ul>
+                <li><a href="index.html" class="active">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="about">
+            <h1>About Me</h1>
+            <p>Hello! I'm a passionate web developer skilled in HTML, CSS, and JavaScript. I love building dynamic and responsive web applications that are both functional and user-friendly. Welcome to my personal portfolio where I showcase some of my work.</p>
+        </section>
+
+        <hr>
+
+        <section id="projects">
+            <h2>My Projects</h2>
+
+            <div class="project-container" id="todo-app">
+                <h3>1. To-Do List App with Local Storage</h3>
+                <p>A simple and effective to-do list that saves your tasks in your browser's local storage. Your tasks will be here even if you close the tab!</p>
+                <div class="app-showcase">
+                    <input type="text" id="task-input" placeholder="Add a new task...">
+                    <button id="add-task-btn">Add Task</button>
+                    <ul id="task-list"></ul>
+                </div>
+            </div>
+
+            <div class="project-container" id="product-app">
+                <h3>2. Product Listing with Filtering & Sorting</h3>
+                <p>An interactive product page. You can filter the items by category and sort them by price or rating.</p>
+                <div class="app-showcase">
+                    <div class="filters">
+                        <label for="category-filter">Filter by Category:</label>
+                        <select id="category-filter">
+                            <option value="all">All</option>
+                            <option value="electronics">Electronics</option>
+                            <option value="apparel">Apparel</option>
+                            <option value="books">Books</option>
+                        </select>
+                        <button class="sort-btn" data-sort="price">Sort by Price</button>
+                        <button class="sort-btn" data-sort="rating">Sort by Rating</button>
+                    </div>
+                    <div id="product-list" class="product-grid">
+                        </div>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <p>You can reach out to me via email at: <a href="mailto:hello@example.com">hello@example.com</a></p>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 MyPortfolio. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
