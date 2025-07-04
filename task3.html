@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advanced CSS & JavaScript Project</title>
+<style>
+  /* Base styles */
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f0f2f5;
+    color: #333;
+  }
+
+  header {
+    text-align: center;
+    background: #4CAF50;
+    color: white;
+    padding: 1rem;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 900px;
+    margin: auto;
+  }
+
+  section {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+
+  h2 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+  }
+
+  /* Image carousel styles */
+  .carousel {
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .carousel img {
+    width: 100%;
+    max-height: 300px;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+
+  .carousel button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+
+  .carousel button:hover {
+    background: rgba(0,0,0,0.7);
+  }
+
+  .prev { left: 10px; }
+  .next { right: 10px; }
+
+  /* API data box */
+  .api-box {
+    background: #e8f5e9;
+    padding: 1rem;
+    border-left: 5px solid #4CAF50;
+    border-radius: 4px;
+  }
+
+  /* Responsive design */
+  @media (max-width: 768px) {
+    main {
+      padding: 1rem;
+    }
+
+    h2 {
+      font-size: 1.3rem;
+    }
+
+    .carousel img {
+      max-height: 200px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    h2 {
+      font-size: 1.1rem;
+    }
+
+    .carousel button {
+      font-size: 1rem;
+      padding: 0.3rem 0.6rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Advanced CSS & JavaScript Project</h1>
+</header>
+
+<main>
+  <!-- TASK - 1: Responsive layout (already covered by media queries in CSS) -->
+
+  <!-- TASK - 2: Image Carousel -->
+  <section>
+    <h2>Image Carousel</h2>
+    <div class="carousel">
+      <button class="prev" onclick="prevImage()">&#10094;</button>
+      <img id="carouselImage" src="https://picsum.photos/id/1015/800/300" alt="Carousel">
+      <button class="next" onclick="nextImage()">&#10095;</button>
+    </div>
+  </section>
+
+  <!-- TASK - 3: Fetch data from API -->
+  <section>
+    <h2>Get a Random Joke</h2>
+    <button onclick="fetchJoke()">Fetch Joke</button>
+    <div id="jokeBox" class="api-box" style="margin-top:1rem;"></div>
+  </section>
+</main>
+
+<script>
+  // Image carousel logic
+  const images = [
+    'https://picsum.photos/id/1015/800/300',
+    'https://picsum.photos/id/1025/800/300',
+    'https://picsum.photos/id/1035/800/300',
+    'https://picsum.photos/id/1045/800/300'
+  ];
+  let currentIndex = 0;
+
+  function showImage(index) {
+    const imgElement = document.getElementById('carouselImage');
+    imgElement.src = images[index];
+  }
+
+  function nextImage() {
+    currentIndex = (currentIndex + 1) % images.length;
+    showImage(currentIndex);
+  }
+
+  function prevImage() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    showImage(currentIndex);
+  }
+
+  // Fetch data from API (official Joke API)
+  function fetchJoke() {
+    fetch('https://official-joke-api.appspot.com/random_joke')
+      .then(response => response.json())
+      .then(data => {
+        const jokeBox = document.getElementById('jokeBox');
+        jokeBox.innerHTML = `<strong>${data.setup}</strong><br>${data.punchline}`;
+      })
+      .catch(error => {
+        console.error('Error fetching joke:', error);
+        document.getElementById('jokeBox').textContent = 'Failed to fetch joke. Try again later.';
+      });
+  }
+</script>
+
+</body>
+</html>
