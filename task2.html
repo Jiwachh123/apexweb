@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All-in-One: Contact Form, Validation, Responsive Layout, To-Do List</title>
+  <style>
+    /* Reset & base styles */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: Arial, sans-serif; background: #f9f9f9; color: #333; }
+
+    header {
+      background: #4CAF50;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      background: #333;
+    }
+
+    nav a {
+      color: white;
+      padding: 1rem;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      background: #555;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      padding: 2rem;
+    }
+
+    section {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      margin-bottom: 1rem;
+    }
+
+    /* Contact form styles */
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin-bottom: 0.3rem;
+    }
+
+    input[type="text"],
+    input[type="email"] {
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    input[type="submit"] {
+      padding: 0.6rem;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background: #45a049;
+    }
+
+    /* To-do list styles */
+    ul {
+      list-style-type: none;
+      margin-top: 1rem;
+    }
+
+    li {
+      background: #eee;
+      padding: 0.5rem;
+      margin-bottom: 0.3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 4px;
+    }
+
+    button.remove-btn {
+      background: #ff4d4d;
+      border: none;
+      color: white;
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button.remove-btn:hover {
+      background: #e60000;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      main {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>My Web Practice Project</h1>
+</header>
+
+<nav>
+  <a href="#">Home</a>
+  <a href="#">Contact</a>
+  <a href="#">To-Do</a>
+</nav>
+
+<main>
+  <section>
+    <h2>Contact Form</h2>
+    <form id="contactForm">
+      <label for="name">Name:</label>
+      <input type="text" id="name" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" required>
+
+      <input type="submit" value="Submit">
+    </form>
+  </section>
+
+  <section>
+    <h2>My To-Do List</h2>
+    <input type="text" id="taskInput" placeholder="Enter new task">
+    <button onclick="addTask()">Add Task</button>
+    <ul id="taskList"></ul>
+  </section>
+</main>
+
+<script>
+  // Form validation
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault(); // prevent form from submitting normally
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const emailRegex = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+    if (!name || !email) {
+      alert('Please fill in all fields.');
+      return;
+    }
+
+    if (!emailRegex.test(email)) {
+      alert('Please enter a valid email.');
+      return;
+    }
+
+    alert('Form submitted successfully!');
+    this.reset();
+  });
+
+  // To-do list
+  function addTask() {
+    const taskInput = document.getElementById('taskInput');
+    const task = taskInput.value.trim();
+    if (!task) {
+      alert('Please enter a task.');
+      return;
+    }
+
+    const li = document.createElement('li');
+    li.textContent = task;
+
+    const btn = document.createElement('button');
+    btn.textContent = 'Remove';
+    btn.className = 'remove-btn';
+    btn.onclick = function() {
+      li.remove();
+    };
+
+    li.appendChild(btn);
+    document.getElementById('taskList').appendChild(li);
+    taskInput.value = '';
+  }
+</script>
+
+</body>
+</html>
